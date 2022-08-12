@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        .center-it {
+            width: 100vw;
+            /* height: 100vh; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cart {
+				width: 20vw;
+				border: 1px black solid;
+				padding: 10px;
+			}
+    </style>
+</head>
+<body>
+
+    <div class="center-it">
+        <h1>Crypto News of the Day</h1>
+    </div>
+
+    <form method="POST" action="/articles">
+        <button type="submit">Save</button>
+        <div data-th-each="n: ${news}">
+            <table>
+                <tr class="cart" >
+                    <td>
+                        <img data-th-src="@{{icon}(icon=${n.imageurl})}" alt="">
+                    </td>
+                    <td>
+                        <p>Id: <span data-th-text="${n.id}"></span></p>
+                        <p>Published on: <span data-th-text="${n.published_on}"></span></p>
+                        <p>Title: <span data-th-text="${n.title}"></span></p>
+                        <br>
+                        <a href="@{n.imageurl}">Link</a>
+                        <p>URL: <span data-th-text="${n.url}"></span></p>
+                        <br>
+                        <strong>Body: <span data-th-text="${n.body}"></span></strong>
+                        <br>
+                        <p>Tags: <span data-th-text="${n.tags}"></span></p>
+                        <p>Catogories: <span data-th-text="${n.categories}"></span></p>
+
+                        <label for="contents">Save</label><br> 
+                        <input type="checkbox" id="contents" name="contents" >
+                        <!-- <input type="hidden" name="id" data-th-value="${n.id}">
+                        <input type="hidden" name="published" data-th-value="${n.published_on}">
+                        <input type="hidden" name="title" data-th-value="${n.title}">
+                        <input type="hidden" name="imageurl" data-th-value="${n.imageurl}">
+                        <input type="hidden" name="url" data-th-value="${n.url}">
+                        <input type="hidden" name="body" data-th-value="${n.body}">
+                        <input type="hidden" name="tags" data-th-value="${n.tags}">
+                        <input type="hidden" name="categories" data-th-value="${n.categories}"> -->
+                        
+                        <br>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
